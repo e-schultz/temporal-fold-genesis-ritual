@@ -2,14 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* DR. BOOTYGRABBER CYBERPUNK DESIGN SYSTEM */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 0 0% 0%;
+    --foreground: 120 100% 50%;
+    
+    /* Cyberpunk green palette */
+    --terminal-green: 120 100% 50%;
+    --terminal-green-dim: 120 100% 30%;
+    --terminal-green-bright: 120 100% 70%;
+    --terminal-bg: 0 0% 0%;
+    --glitch-red: 0 100% 50%;
+    --glitch-blue: 240 100% 50%;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -17,24 +23,24 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 120 100% 50%;
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 120 100% 30%;
+    --secondary-foreground: 120 100% 50%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 120 50% 20%;
+    --muted-foreground: 120 100% 70%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 120 100% 70%;
+    --accent-foreground: 0 0% 0%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 120 100% 50%;
+    --input: 120 100% 50%;
+    --ring: 120 100% 50%;
 
     --radius: 0.5rem;
 
@@ -100,6 +106,131 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-mono cursor-crosshair overflow-x-hidden;
   }
+}
+
+/* CYBERPUNK GLITCH EFFECTS */
+@layer components {
+  .glitch-text {
+    @apply relative inline-block;
+  }
+  
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .glitch-text::before {
+    left: 2px;
+    text-shadow: -1px 0 hsl(var(--glitch-red));
+    animation: glitch-anim-1 2s infinite linear alternate-reverse;
+  }
+  
+  .glitch-text::after {
+    left: -2px;
+    text-shadow: 1px 0 hsl(var(--glitch-blue));
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+  }
+  
+  @keyframes glitch-anim-1 {
+    0% { clip-path: inset(80% 0 0 0); }
+    20% { clip-path: inset(20% 0 80% 0); }
+    40% { clip-path: inset(40% 0 40% 0); }
+    60% { clip-path: inset(80% 0 20% 0); }
+    80% { clip-path: inset(10% 0 70% 0); }
+    100% { clip-path: inset(30% 0 50% 0); }
+  }
+  
+  @keyframes glitch-anim-2 {
+    0% { clip-path: inset(10% 0 60% 0); }
+    20% { clip-path: inset(30% 0 0% 0); }
+    40% { clip-path: inset(50% 0 30% 0); }
+    60% { clip-path: inset(0% 0 90% 0); }
+    80% { clip-path: inset(70% 0 10% 0); }
+    100% { clip-path: inset(20% 0 40% 0); }
+  }
+  
+  .pulse-glow {
+    animation: pulse-glow 2s infinite;
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+  
+  .text-shadow-glow {
+    text-shadow: 0 0 5px hsl(var(--terminal-green));
+  }
+  
+  .cyberpunk-border {
+    border: 1px solid hsl(var(--terminal-green));
+  }
+  
+  .cyberpunk-button {
+    @apply cyberpunk-border p-3 text-center cursor-pointer transition-all duration-200 select-none;
+  }
+  
+  .cyberpunk-button:hover {
+    background-color: hsl(var(--terminal-green-dim));
+  }
+  
+  .cyberpunk-button.active {
+    background-color: hsl(var(--terminal-green));
+    color: hsl(var(--terminal-bg));
+  }
+  
+  .terminal-window {
+    @apply cyberpunk-border p-3 h-48 overflow-y-auto text-xs leading-relaxed;
+  }
+  
+  .visualizer-container {
+    @apply w-full h-24 cyberpunk-border relative overflow-hidden;
+    background-color: hsl(var(--terminal-bg));
+  }
+  
+  .visualizer-bar {
+    @apply absolute bottom-0 transition-all duration-100;
+    background-color: hsl(var(--terminal-green));
+    width: 3px;
+    height: 0;
+  }
+  
+  .cyberpunk-input {
+    @apply w-full p-2 font-mono cyberpunk-border;
+    background: hsl(var(--terminal-bg));
+    color: hsl(var(--terminal-green));
+  }
+  
+  .ritual-trigger {
+    @apply inline-block m-2 px-3 py-2 cursor-pointer transition-all duration-200;
+    border: 1px dashed hsl(var(--terminal-green));
+  }
+  
+  .ritual-trigger:hover {
+    background-color: hsl(var(--terminal-green-dim));
+  }
+}
+
+/* SCANLINE EFFECT */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(0, 255, 0, 0.03) 50%,
+    rgba(0, 0, 0, 0.03) 50%
+  );
+  background-size: 100% 4px;
+  z-index: 1000;
+  pointer-events: none;
 }
