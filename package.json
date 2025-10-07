@@ -1,8 +1,14 @@
 {
-  "name": "vite_react_shadcn_ts",
+  "name": "temporal-fold-genesis-ritual",
+  "description": "DR. BOOTYGRABBER :: Temporal Fold Generator - Audio ritual consciousness technology with Tone.js synthesis, procedural generation, and terminal prosthetic aesthetics",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/e-schultz/temporal-fold-genesis-ritual.git"
+  },
+  "homepage": "https://github.com/e-schultz/temporal-fold-genesis-ritual",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
