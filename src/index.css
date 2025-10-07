@@ -2,19 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-/* DR. BOOTYGRABBER CYBERPUNK DESIGN SYSTEM */
+/* FLOAT DESIGN SYSTEM :: NEON DUSK AESTHETIC */
+/* Ritual over Productivity :: Shacks Not Cathedrals */
 
 @layer base {
   :root {
     --background: 0 0% 0%;
-    --foreground: 120 100% 50%;
+    --foreground: 277 100% 65%;
     
-    /* Cyberpunk green palette */
-    --terminal-green: 120 100% 50%;
-    --terminal-green-dim: 120 100% 30%;
-    --terminal-green-bright: 120 100% 70%;
+    /* FLOAT Neon Dusk Palette */
+    --ritual-dark: 277 100% 4%;
     --terminal-bg: 0 0% 0%;
-    --glitch-red: 0 100% 50%;
+    
+    /* Primary Accents (Persona Colors) */
+    --float-purple: 277 100% 65%;        /* Sysop / Infrastructure Archaeology */
+    --float-red: 348 100% 50%;           /* Consciousness Technology */
+    --float-yellow: 60 100% 63%;         /* Cadence & Rituals */
+    --float-green: 152 67% 54%;          /* TechCraft / AI Gaslighting */
+    --float-cyan: 185 84% 60%;           /* Float System / Oracle Crosstalk */
+    --float-pink: 320 100% 70%;          /* Karen / Ritual Studies */
+    
+    /* Legacy Terminal Colors (kept for compatibility) */
+    --terminal-green: 152 67% 54%;
+    --terminal-green-dim: 152 67% 30%;
+    --terminal-green-bright: 152 67% 74%;
+    --glitch-red: 348 100% 50%;
     --glitch-blue: 240 100% 50%;
 
     --card: 0 0% 100%;
@@ -23,24 +35,24 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 120 100% 50%;
+    --primary: 277 100% 65%;
     --primary-foreground: 0 0% 0%;
 
-    --secondary: 120 100% 30%;
-    --secondary-foreground: 120 100% 50%;
+    --secondary: 277 100% 30%;
+    --secondary-foreground: 277 100% 90%;
 
-    --muted: 120 50% 20%;
-    --muted-foreground: 120 100% 70%;
+    --muted: 277 50% 20%;
+    --muted-foreground: 277 100% 70%;
 
-    --accent: 120 100% 70%;
+    --accent: 152 67% 54%;
     --accent-foreground: 0 0% 0%;
 
-    --destructive: 0 100% 50%;
+    --destructive: 348 100% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 120 100% 50%;
-    --input: 120 100% 50%;
-    --ring: 120 100% 50%;
+    --border: 277 100% 65%;
+    --input: 277 100% 65%;
+    --ring: 277 100% 65%;
 
     --radius: 0.5rem;
 
@@ -110,8 +122,9 @@
   }
 }
 
-/* CYBERPUNK GLITCH EFFECTS */
+/* FLOAT RITUAL COMPONENTS :: Terminal Aesthetics as Cognitive Prosthetic */
 @layer components {
+  /* Glitch Effects (Memetic Propagation) */
   .glitch-text {
     @apply relative inline-block;
   }
@@ -128,13 +141,13 @@
   
   .glitch-text::before {
     left: 2px;
-    text-shadow: -1px 0 hsl(var(--glitch-red));
+    text-shadow: -1px 0 hsl(var(--float-red));
     animation: glitch-anim-1 2s infinite linear alternate-reverse;
   }
   
   .glitch-text::after {
     left: -2px;
-    text-shadow: 1px 0 hsl(var(--glitch-blue));
+    text-shadow: 1px 0 hsl(var(--float-cyan));
     animation: glitch-anim-2 3s infinite linear alternate-reverse;
   }
   
@@ -166,23 +179,71 @@
   }
   
   .text-shadow-glow {
-    text-shadow: 0 0 5px hsl(var(--terminal-green));
+    text-shadow: 0 0 5px hsl(var(--float-purple));
   }
   
+  /* FLOAT Border System (Visible Scaffolding) */
   .cyberpunk-border {
-    border: 1px solid hsl(var(--terminal-green));
+    border: 1px solid hsl(var(--float-purple));
   }
   
+  .float-border-green {
+    border: 1px solid hsl(var(--float-green));
+  }
+  
+  .float-border-pink {
+    border: 1px solid hsl(var(--float-pink));
+  }
+  
+  .float-border-cyan {
+    border: 1px solid hsl(var(--float-cyan));
+  }
+  
+  .float-border-yellow {
+    border: 1px solid hsl(var(--float-yellow));
+  }
+  
+  /* FLOAT Button System (Ritual Triggers) */
   .cyberpunk-button {
     @apply cyberpunk-border p-3 text-center cursor-pointer transition-all duration-200 select-none;
+    color: hsl(var(--float-purple));
   }
   
   .cyberpunk-button:hover {
-    background-color: hsl(var(--terminal-green-dim));
+    background-color: hsl(var(--float-purple) / 0.2);
   }
   
   .cyberpunk-button.active {
-    background-color: hsl(var(--terminal-green));
+    background-color: hsl(var(--float-purple));
+    color: hsl(var(--terminal-bg));
+  }
+  
+  /* Ritual Verb Variants */
+  .ritual-button-green {
+    @apply float-border-green;
+    color: hsl(var(--float-green));
+  }
+  
+  .ritual-button-green:hover {
+    background-color: hsl(var(--float-green) / 0.2);
+  }
+  
+  .ritual-button-green.active {
+    background-color: hsl(var(--float-green));
+    color: hsl(var(--terminal-bg));
+  }
+  
+  .ritual-button-pink {
+    @apply float-border-pink;
+    color: hsl(var(--float-pink));
+  }
+  
+  .ritual-button-pink:hover {
+    background-color: hsl(var(--float-pink) / 0.2);
+  }
+  
+  .ritual-button-pink.active {
+    background-color: hsl(var(--float-pink));
     color: hsl(var(--terminal-bg));
   }
   
@@ -197,28 +258,77 @@
   
   .visualizer-bar {
     @apply absolute bottom-0 transition-all duration-100;
-    background-color: hsl(var(--terminal-green));
     width: 3px;
     height: 0;
+  }
+  
+  /* Multi-color visualizer bars (rotate through FLOAT palette) */
+  .visualizer-bar:nth-child(6n+1) {
+    background-color: hsl(var(--float-purple));
+  }
+  
+  .visualizer-bar:nth-child(6n+2) {
+    background-color: hsl(var(--float-cyan));
+  }
+  
+  .visualizer-bar:nth-child(6n+3) {
+    background-color: hsl(var(--float-green));
+  }
+  
+  .visualizer-bar:nth-child(6n+4) {
+    background-color: hsl(var(--float-pink));
+  }
+  
+  .visualizer-bar:nth-child(6n+5) {
+    background-color: hsl(var(--float-yellow));
+  }
+  
+  .visualizer-bar:nth-child(6n+6) {
+    background-color: hsl(var(--float-red));
   }
   
   .cyberpunk-input {
     @apply w-full p-2 font-mono cyberpunk-border;
     background: hsl(var(--terminal-bg));
-    color: hsl(var(--terminal-green));
+    color: hsl(var(--float-purple));
   }
   
+  .cyberpunk-input:focus {
+    outline: none;
+    border-color: hsl(var(--float-cyan));
+    color: hsl(var(--float-cyan));
+  }
+  
+  /* Ritual Triggers (Frequency Activation) */
   .ritual-trigger {
     @apply inline-block m-2 px-3 py-2 cursor-pointer transition-all duration-200;
-    border: 1px dashed hsl(var(--terminal-green));
+    border: 1px dashed hsl(var(--float-green));
+    color: hsl(var(--float-green));
   }
   
   .ritual-trigger:hover {
-    background-color: hsl(var(--terminal-green-dim));
+    background-color: hsl(var(--float-green) / 0.2);
+    border-style: solid;
+  }
+  
+  /* Context Marker Styles (protocol::, ctx::, signal::) */
+  .context-marker {
+    color: hsl(var(--float-yellow));
+    font-weight: bold;
+  }
+  
+  .protocol-marker {
+    color: hsl(var(--float-pink));
+    font-weight: bold;
+  }
+  
+  .signal-marker {
+    color: hsl(var(--float-red));
+    font-weight: bold;
   }
 }
 
-/* SCANLINE EFFECT */
+/* SCANLINE EFFECT (Terminal Aesthetic as Cognitive Prosthetic) */
 body::after {
   content: "";
   position: fixed;
@@ -227,10 +337,18 @@ body::after {
   width: 100%;
   height: 100%;
   background: linear-gradient(
-    rgba(0, 255, 0, 0.03) 50%,
+    rgba(180, 77, 255, 0.02) 50%,
     rgba(0, 0, 0, 0.03) 50%
   );
   background-size: 100% 4px;
   z-index: 1000;
   pointer-events: none;
 }
+
+/* FLOAT Utility Classes */
+.text-float-purple { color: hsl(var(--float-purple)); }
+.text-float-red { color: hsl(var(--float-red)); }
+.text-float-yellow { color: hsl(var(--float-yellow)); }
+.text-float-green { color: hsl(var(--float-green)); }
+.text-float-cyan { color: hsl(var(--float-cyan)); }
+.text-float-pink { color: hsl(var(--float-pink)); }

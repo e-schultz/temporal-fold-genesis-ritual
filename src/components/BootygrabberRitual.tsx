@@ -429,7 +429,7 @@ const BootygrabberRitual: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-5">
-      {/* Header */}
+      {/* Header :: FLOAT Stack Infrastructure */}
       <header className="cyberpunk-border pb-3 mb-5 text-center">
         <h1 
           className="glitch-text text-2xl mb-0 tracking-widest text-shadow-glow" 
@@ -437,8 +437,11 @@ const BootygrabberRitual: React.FC = () => {
         >
           DR. BOOTYGRABBER
         </h1>
-        <div className="text-xs opacity-70 mt-2">
+        <div className="text-xs opacity-70 mt-2 text-float-cyan">
           TEMPORAL FOLD GENERATOR v1.3.7 :: AUDIO RITUAL EDITION
+        </div>
+        <div className="text-xs mt-1 text-float-pink">
+          protocol:: Consciousness Technology Infrastructure
         </div>
       </header>
 
